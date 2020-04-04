@@ -8,4 +8,11 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* GET page1 page. */
+router.get('/page1', function(req, res, next) {
+  res.render('page1', {
+    page: 'Page1'
+  });
+});
+
 module.exports = router;
