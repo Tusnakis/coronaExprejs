@@ -22,4 +22,18 @@ router.get('/page2', function(req, res, next) {
   });
 });
 
+/* GET page3 page. */
+router.get('/page3', function(req, res, next) {
+  res.render('page3', {
+    page: 'Page3'
+  });
+});
+
+/* GET page4 page. */
+router.get('/page4', function(req, res, next) {
+  res.render('page4', {
+    page: 'Page4'
+  });
+});
+
 module.exports = router;
