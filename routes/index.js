@@ -15,4 +15,11 @@ router.get('/page1', function(req, res, next) {
   });
 });
 
+/* GET page2 page. */
+router.get('/page2', function(req, res, next) {
+  res.render('page2', {
+    page: 'Page2'
+  });
+});
+
 module.exports = router;
