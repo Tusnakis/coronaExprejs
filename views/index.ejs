@@ -6,9 +6,12 @@
 </head>
 
 <body>
-    <%= page %>
-    <br>
-    <a href="/page1">Page1</a>
+    <div class="container-fluid">
+        <%- include ('partials/nav') %>
+        <br>
+        <%= page %>
+    </div>
 </body>
+<%- include ('partials/script') %>
 
 </html>
