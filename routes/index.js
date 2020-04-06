@@ -2,55 +2,123 @@ var express = require('express');
 var request = require("request");
 var router = express.Router();
 
+router.use(function(req,res,next){
+  res.locals.datos = null;
+  next();
+});
+
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', {
     page: 'Home'
   });
 });
 
-/* GET contagios page. */
-router.get('/contagios', function(req, res, next) {
+/* ALL casos page. */
+router.all('/casos', function (req, res) {
+  var datosElegidos = {
+    comunidad: req.body.comunidades,
+    //eleccion: req.body.eleccion
+  }
   var url = 'https://raw.githubusercontent.com/datadista/datasets/master/COVID%2019/ccaa_covid19_casos_long.csv';
-  var comunidadesArr = ["Andalucía", "Aragón", "Asturias", "Baleares", "Canarias", "Cantabria", "Castilla-La Mancha", "Castilla y León", "Cataluña", "Ceuta", "C. Valenciana", "Extremadura", "Galicia", "Madrid", "Melilla", "Murcia", "Navarra", "País Vasco", "La Rioja"];
   request(url, function (error, response, body) {
     if (!error && response.statusCode == 200) {
 
-        var coronaArr = body.split("\n");
-        var camposCoronaArr = [];
+      var coronaArr = body.split("\n");
+      var camposCoronaArr = [];
 
-        for (var i = 0; i < coronaArr.length; i++) {
-            camposCoronaArr[i] = coronaArr[i].split(",");
-        }
+      for (var i = 0; i < coronaArr.length; i++) {
+        camposCoronaArr[i] = coronaArr[i].split(",");
+      }
 
-        res.render('contagios', {
-          page:'Contagios',
-          tituloCasos:'Contagios'
-          ,casos:camposCoronaArr,
-          comunidades:comunidadesArr
-        });
+      res.render('casos', {
+        datos: datosElegidos,
+        datosCorona: camposCoronaArr,
+        fecha: "2020-02-27",
+        page: 'Casos'
+      });
     }
   });
 });
 
-/* GET page2 page. */
-router.get('/page2', function(req, res, next) {
-  res.render('page2', {
-    page: 'Page2'
+/* ALL ucis page. */
+router.all('/ucis', function (req, res) {
+  var datosElegidos = {
+    comunidad: req.body.comunidades,
+    //eleccion: req.body.eleccion
+  }
+  var url = 'https://raw.githubusercontent.com/datadista/datasets/master/COVID%2019/ccaa_covid19_uci_long.csv';
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+
+      var coronaArr = body.split("\n");
+      var camposCoronaArr = [];
+
+      for (var i = 0; i < coronaArr.length; i++) {
+        camposCoronaArr[i] = coronaArr[i].split(",");
+      }
+
+      res.render('ucis', {
+        datos: datosElegidos,
+        datosCorona: camposCoronaArr,
+        fecha: "2020-03-04",
+        page: 'Ucis'
+      });
+    }
   });
 });
 
-/* GET page3 page. */
-router.get('/page3', function(req, res, next) {
-  res.render('page3', {
-    page: 'Page3'
+/* ALL altas page. */
+router.all('/altas', function (req, res) {
+  var datosElegidos = {
+    comunidad: req.body.comunidades,
+    //eleccion: req.body.eleccion
+  }
+  var url = 'https://raw.githubusercontent.com/datadista/datasets/master/COVID%2019/ccaa_covid19_altas_long.csv';
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+
+      var coronaArr = body.split("\n");
+      var camposCoronaArr = [];
+
+      for (var i = 0; i < coronaArr.length; i++) {
+        camposCoronaArr[i] = coronaArr[i].split(",");
+      }
+
+      res.render('altas', {
+        datos: datosElegidos,
+        datosCorona: camposCoronaArr,
+        fecha: "2020-03-16",
+        page: 'Altas'
+      });
+    }
   });
 });
 
-/* GET page4 page. */
-router.get('/page4', function(req, res, next) {
-  res.render('page4', {
-    page: 'Page4'
+/* ALL fallecidos page. */
+router.all('/fallecidos', function (req, res) {
+  var datosElegidos = {
+    comunidad: req.body.comunidades,
+    //eleccion: req.body.eleccion
+  }
+  var url = 'https://raw.githubusercontent.com/datadista/datasets/master/COVID%2019/ccaa_covid19_fallecidos_long.csv';
+  request(url, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+
+      var coronaArr = body.split("\n");
+      var camposCoronaArr = [];
+
+      for (var i = 0; i < coronaArr.length; i++) {
+        camposCoronaArr[i] = coronaArr[i].split(",");
+      }
+
+      res.render('fallecidos', {
+        datos: datosElegidos,
+        datosCorona: camposCoronaArr,
+        fecha: "2020-03-03",
+        page: 'Fallecidos'
+      });
+    }
   });
 });
 
