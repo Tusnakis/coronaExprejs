@@ -10,6 +10,18 @@ a {
   font-size: 12px;
 }
 
+.containerTable {
+  padding-bottom: 50px;
+}
+
 .mencion {
-  font-size: 8px;
+  font-size: 10px;
+  padding-top: 15px;
+}
+
+footer {
+  position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
 }

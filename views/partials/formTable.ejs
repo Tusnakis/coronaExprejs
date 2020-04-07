@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container containerTable">
     <div class="row">
         <div class="col-sm-12 text-center">
             <br>
@@ -22,7 +22,7 @@
                     <thead class="bg-dark text-light">
                         <tr>
                             <th>Fecha</th>
-                            <th>Contagiados</th>
+                            <th><%= page.charAt(0).toUpperCase() + page.slice(1) %></th>
                             <th>Incremento %</th>
                         </tr>
                     </thead>
@@ -50,6 +50,7 @@
                         <% } %>
                     </tbody>
                 </table>
+                <p class="mencion">Fuente: <a href="https://github.com/datadista/datasets/tree/master/COVID%2019">Ministerio de Sanidad a través de Datadista</a></p>
                 <% } else { %>
                 <p></p>
                 <% } %>
