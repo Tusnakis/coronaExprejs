@@ -6,6 +6,10 @@ a {
   color: #00B7FF;
 }
 
+.cont-nav {
+  margin: 50px;
+}
+
 .container {
   font-size: 12px;
 }
